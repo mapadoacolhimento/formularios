@@ -63,11 +63,9 @@ module.exports = {
 
     colors: {
       gray: "#424242",
-      background: {
-        purple: "#EBE5EF",
-        yellow: "#F5E6C2"
-      }
-
+      lightGray: "#EEEEEE",
+      purple: "#EBE5EF",
+      yellow: "#F5E6C2"
     },
     extend: {
       width: {
