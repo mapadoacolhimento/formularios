@@ -53,7 +53,7 @@ step_forms = {
                 ('5', 'Menos de 5 anos'),
                 ('9', 'Menos de 10 anos'),
                 ('10', 'Mais de 10 anos'),
-            ], required=False),
+            ], required=True),
     },
     5: {
         "": ChoiceField(
@@ -69,25 +69,30 @@ step_forms = {
                 ('serviços públicos', 'Serviços públicos'),
                 ('não tenho experiência', 'Não tenho experiência'),
                 ('outros', 'Outros'),
-            ]),
+            ], required=True),
     },
-     6: {
-         "": ChoiceField(
+    6: {
+        "": ChoiceField(
             widget=forms.CheckboxSelectMultiple,
             choices=[
-                ('psicologia analítica de jung ou análise junguiana', 'Psicologia Analítica de Jung ou Análise Junguiana'),
+                ('psicologia analítica de jung ou análise junguiana',
+                 'Psicologia Analítica de Jung ou Análise Junguiana'),
                 ('assistência social', 'Assistência social'),
                 ('psicanálise', 'Psicanálise'),
-                ('behaviorismo ou analítico comportamental', 'Behaviorismo ou Analítico Comportamental'),
+                ('behaviorismo ou analítico comportamental',
+                 'Behaviorismo ou Analítico Comportamental'),
                 ('humanismo', 'Humanismo'),
                 ('psicoterapia corporal', 'Psicoterapia Corporal'),
-                ('cognitivo-Comportamental ou tcc', 'Cognitivo-Comportamental ou TCC'),
+                ('cognitivo-Comportamental ou tcc',
+                 'Cognitivo-Comportamental ou TCC'),
                 ('gestalt-terapia', 'Gestalt-terapia'),
-                ('abordagem centrada na Pessoa (acp)', 'Abordagem Centrada na Pessoa (ACP)'),
+                ('abordagem centrada na Pessoa (acp)',
+                 'Abordagem Centrada na Pessoa (ACP)'),
                 ('outros', 'Outros'),
-            ]),
+            ], required=True),
     },
 }
+
 
 def index(request):
     return render(request=request, template_name="home.html")
@@ -102,6 +107,7 @@ def fill_steps(request, type_form, step):
         form = VolunteerForm(fields=fields, data=request.POST)
         if form.is_valid():
             return HttpResponseRedirect(f"/{type_form}/{step+1}")
+
         else:
             if step == list(step_forms)[-1]:
                 return HttpResponseRedirect("/")
