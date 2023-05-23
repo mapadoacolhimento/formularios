@@ -5,20 +5,21 @@ from .fields import CharField, ChoiceField, EmailField, MaskField, ZipCodeField
 
 # TODO: replace Form with ModelForm
 class VolunteerForm(forms.Form):
-  
 
-  template_name = "forms/daisyui-form.html"
-    
-  def __init__(self, fields = [],  *args, **kwargs):
-    super(VolunteerForm, self).__init__(*args, **kwargs)
-    self.fields = fields
- 
+    template_name = "forms/daisyui-form.html"
+
+    def __init__(self, fields=[],  *args, **kwargs):
+        super(VolunteerForm, self).__init__(*args, **kwargs)
+        self.fields = fields
+
+
 class PeopleForm(forms.Form):
-    first_name = CharField(label="Primeiro nome", max_length=15)
+    first_name = CharField(label="Primeiro nome", max_length=15, required=True)
     last_name = CharField(label="Sobrenome", required=False, max_length=15)
-    email = EmailField(label="Seu melhor e-mail")
+    email = EmailField(label="Seu melhor e-mail", required=True)
     whatsapp = MaskField(label="Número de telefone", mask="(00) 0 0000-0000")
-    zipcode = ZipCodeField(label="CEP de atendimento", mask="00000-000")
+    zipcode = ZipCodeField(label="CEP de atendimento",
+                           mask="00000-000", required=True)
 
     template_name = "forms/daisyui-form.html"
 
@@ -47,8 +48,7 @@ class People2Form(forms.Form):
     phone = MaskField(label="Telefone de atendimento com DDD",
                       mask="(00) 0 0000-0000")
 
-    document_number = MaskField(label="CRP", mask="00/000000")
+    document_number = MaskField(label="CRP", mask="00/000000", required=True)
     # document_number = MaskField(label="OAB", mask="(00) 0 0000-0000")
 
     template_name = "forms/daisyui-form.html"
-
