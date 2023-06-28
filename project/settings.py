@@ -99,8 +99,13 @@ WSGI_APPLICATION = "project.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DEFAULT_DB_SQLITE = BASE_DIR / "db.sqlite3"
-
-DATABASES = {"default": env.db_url("DATABASE_URL", f"sqlite:///{DEFAULT_DB_SQLITE}")}
+BONDE_DB_SQLITE = BASE_DIR / "bonde.sqlite3"
+DATABASES = {
+  "default": env.db_url("DATABASE_URL", f"sqlite:///{DEFAULT_DB_SQLITE}"),
+  "pentest":  env.db_url("BONDE_DATABASE_URL", f"sqlite:///{BONDE_DB_SQLITE}")          
+             
+             
+             }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
