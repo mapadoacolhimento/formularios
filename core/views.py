@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login
 from django.contrib import messages
 from django import forms
-import json
 
 from .forms import VolunteerForm
 from .choices import (
@@ -29,6 +28,8 @@ from .fields import (
     SelectField
 )
 from .models import FormData
+
+from .bonde.add import create_new_form_entrie
 
 # Create your views here.
 form_steps = {
@@ -73,13 +74,13 @@ form_steps = {
         "title": "Disponibilidade",
         "subtitle": "Como voluntária, você se dispõe a atender pelo menos 1 mulher que precisa de ajuda com o mínimo de 1h de dedicação semanal. Se tiver disponibilidade, pode atender mais mulheres informando-nos abaixo:",
         "fields": {
-            "aviability:": SelectField(
+            "aviability": SelectField(
                 label="Vagas para atendimento:", choices=AVAILABILITY_CHOICES
             ),
-            "modality:": SelectField(
+            "modality": SelectField(
                 label="Modalidade de atendimento", choices=MODALITY_CHOICES
             ),
-            "libras:": SelectField(
+            "libras": SelectField(
                 label="Atende em linguagem de sinais (libras)", choices=LIBRAS_CHOICE
             ),
         },
@@ -257,9 +258,7 @@ def fill_step(request, type_form, step):
                 form_data, created_form = FormData.objects.get_or_create(
                     user=user
                 )
-
                 total = form_data.total_steps
-
                 if created_form:
                     user.username = form.cleaned_data["email"] 
                     user.first_name = form.cleaned_data["first_name"]
@@ -270,7 +269,7 @@ def fill_step(request, type_form, step):
                     form_data.type_form = type_form
                     form_data.save()
                 else:
-      
+                     
                   if form_data.type_form != type_form:
                       messages.success(
                       request,
@@ -348,7 +347,7 @@ def final_step(request, type_form):
 
         form_data.step = total
         form_data.save()
-
+        create_new_form_entrie(form_data)
         # capacitação
         if form_data.values["status"] == "cadastrada":
             return HttpResponseRedirect("/")

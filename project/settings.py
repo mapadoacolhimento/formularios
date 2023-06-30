@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "theme",
     "core",
+    "core.bonde"
+    
 ]
 
 MIDDLEWARE = [
@@ -102,10 +104,14 @@ DEFAULT_DB_SQLITE = BASE_DIR / "db.sqlite3"
 BONDE_DB_SQLITE = BASE_DIR / "bonde.sqlite3"
 DATABASES = {
   "default": env.db_url("DATABASE_URL", f"sqlite:///{DEFAULT_DB_SQLITE}"),
-  "pentest":  env.db_url("BONDE_DATABASE_URL", f"sqlite:///{BONDE_DB_SQLITE}")          
+  "bonde":  env.db_url("BONDE_DATABASE_URL", f"sqlite:///{BONDE_DB_SQLITE}")          
              
              
              }
+
+DATABASE_ROUTERS = [
+    "core.bonde.router.AuthRouter",
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
