@@ -1,5 +1,27 @@
 services:
-    mapa-org-formularios:
+  moodle:
+    image: bitnami/moodle:4
+
+    environment:
+      - MOODLE_DATABASE_TYPE=${MOODLE_DATABASE_TYPE:-pgsql}
+      - MOODLE_DATABASE_HOST=${MOODLE_DATABASE_HOST}
+      - MOODLE_DATABASE_USER=${MOODLE_DATABASE_USER}
+      - MOODLE_DATABASE_PASSWORD=${MOODLE_DATABASE_PASSWORD}
+      - MOODLE_DATABASE_NAME=${MOODLE_DATABASE_NAME}
+      - MOODLE_DATABASE_PORT_NUMBER=${MOODLE_DATABASE_PORT_NUMBER:-5432}
+      - MOODLE_HOST=${MOODLE_HOST}
+      - MOODLE_SSLPROXY=${MOODLE_SSLPROXY:-true}
+
+    labels:
+      - traefik.http.services.moodle.loadbalancer.server.port=8080
+      - traefik.enable=true
+      - traefik.http.routers.moodle.tls=true
+      - traefik.http.routers.moodle.tls.certresolver=myresolver
+    volumes:
+      - moodle_data:/bitnami/moodle
+      - moodledata_data:/bitnami/moodledata
+
+  mapa-org-formularios:
       image: ${DOCKER_IMAGE:-nossas/mapa-org-formularios:latest}
       restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
       pull_policy: always
@@ -15,6 +37,12 @@ services:
         - traefik.http.services.mapa-org-formularios.loadbalancer.server.port=8000
         - traefik.http.routers.mapa-org-formularios.tls=true
         - traefik.http.routers.mapa-org-formularios.tls.certresolver=myresolver
+volumes:
+
+  moodle_data:
+    driver: local
+  moodledata_data:
+    driver: local
 
 networks:
   default:

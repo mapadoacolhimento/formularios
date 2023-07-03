@@ -58,3 +58,7 @@ npm run dev
 ```
 
 Acessar o projeto através da url http://127.0.0.1:8000/
+
+Capacitação Moodle
+------------
+Utilizamos a plataforma Moodle para realizar a capacitação das voluntárias (psicólogas e advogadas). As orientações sobre modificações na plataforma estão [nessa documentação](https://github.com/mapadoacolhimento/cadastro/tree/feature/moodle-training/moodle-training).
