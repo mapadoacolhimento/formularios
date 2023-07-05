@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "theme",
     "core",
-    "core.bonde"
+    "core.bonde",
+    "core.moodle"
     
 ]
 
@@ -168,3 +169,7 @@ STATICFILES_FINDERS = (
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+MOODLE_API_URL = env("MOODLE_API_URL", default= "https://moodle.site.com")
+
+MOODLE_API_KEY = env("MOODLE_API_KEY", default="XXXXXXXXX")

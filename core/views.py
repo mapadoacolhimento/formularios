@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login
 from django.contrib import messages
+from django.conf import settings
 from django import forms
 
 from .forms import VolunteerForm
@@ -30,6 +31,8 @@ from .fields import (
 from .models import FormData
 
 from .bonde.add import create_new_form_entrie
+
+from .moodle.moodle import create_and_enrol
 
 # Create your views here.
 form_steps = {
@@ -350,8 +353,10 @@ def final_step(request, type_form):
         create_new_form_entrie(form_data)
         # capacitação
         if form_data.values["status"] == "cadastrada":
-            return HttpResponseRedirect("/")
-
+            created = create_and_enrol(form_data)
+            return HttpResponseRedirect(f"{settings.MOODLE_API_URL}/login/index.php")
+        
+        #TODO para onde direcionar quando for reprovada
         return HttpResponseRedirect("/")
 
     return render(request, "forms/people2.html", context)
