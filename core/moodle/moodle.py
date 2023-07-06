@@ -1,14 +1,11 @@
 from core.moodle import moodle_api
 from django.conf import settings
 
-moodle_api.URL = settings.MOODLE_API_URL
-#"https://moodle.staging.bonde.org/"
-moodle_api.KEY = settings.MOODLE_API_KEY
-#"8c1535c1da034bbb9871309098f5ce14"
-
 
 def create_and_enrol(form_data):
-    #import ipdb; ipdb.set_trace()
+    
+    moodle_api.URL = settings.MOODLE_API_URL
+    moodle_api.KEY = settings.MOODLE_API_KEY
     
     user  ={
         'firstname':form_data.values['first_name'],

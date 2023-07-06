@@ -10,7 +10,9 @@ def create_new_form_entrie(form_data: FormData):
     if created:
         activist.first_name = form_data.values["first_name"]
         activist.last_name = form_data.values["last_name"]
-        activist.name = form_data.values["first_name"] + " " + form_data.values["last_name"]
+        activist.name = (
+            form_data.values["first_name"] + " " + form_data.values["last_name"]
+        )
         activist.save()
 
     if form_data.type_form == "psicologa":
@@ -80,6 +82,62 @@ def create_new_form_entrie(form_data: FormData):
                 "required": True,
                 "value": form_data.values["aviability"],
             },
+            {
+                "uid": "extra_field_color",
+                "label": "color",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "values": form_data.values["color"],
+            },
+            {
+                "uid": "extra_field_gender",
+                "label": "gender",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "gender": form_data.values["gender"],
+            },
+            {
+                "uid": "extra_field_birth_date",
+                "label": "birth_date",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "birth_date": form_data.values["birth_date"],
+            },
+            {
+                "uid": "extra_field_libras",
+                "label": "libras",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "libras": form_data.values["libras"],
+            },
+            {
+                "uid": "extra_field_years_of_experience",
+                "label": "years_of_experience",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "years_of_experience": form_data.values["years_of_experience"],
+            },
+            {
+                "uid": "fields_of_work",
+                "label": "fields_of_work",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "fields_of_work": form_data.values["fields_of_work"],
+            },
+            {
+                "uid": "extra_field_status",
+                "label": "status",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "status": form_data.values["status"],
+            },
         ]
     else:
         widget_id = 17633
@@ -147,6 +205,62 @@ def create_new_form_entrie(form_data: FormData):
                 "placeholder": "1, 2, 3, 4, 5 ou mais",
                 "required": True,
                 "value": form_data.values["aviability"],
+            },
+            {
+                "uid": "extra_field_color",
+                "label": "color",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "values": form_data.values["color"],
+            },
+            {
+                "uid": "extra_field_gender",
+                "label": "gender",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "gender": form_data.values["gender"],
+            },
+            {
+                "uid": "extra_field_birth-date",
+                "label": "birth_date",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "birth_date": form_data.values["birth_date"],
+            },
+            {
+                "uid": "extra_field_libras",
+                "label": "libras",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "libras": form_data.values["libras"],
+            },
+            {
+                "uid": "extra_field_years_of_experience",
+                "label": "years_of_experience",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "years_of_experience": form_data.values["years_of_experience"],
+            },
+            {
+                "uid": "fields_of_work",
+                "label": "fields_of_work",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "fields_of_work": form_data.values["fields_of_work"],
+            },
+            {
+                "uid": "extra_field_status",
+                "label": "status",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "status": form_data.values["status"],
             },
         ]
 
