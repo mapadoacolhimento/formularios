@@ -122,6 +122,24 @@ def create_new_form_entrie(form_data: FormData):
                 "required": False,
                 "years_of_experience": form_data.values["years_of_experience"],
             },
+            
+            {
+                "uid": "approach",
+                "label": "approach",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "approach": form_data.values["approach"],
+            },
+            
+            {
+                "uid": "modality",
+                "label": "modality",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "modality": form_data.values["modality"],
+            },
             {
                 "uid": "fields_of_work",
                 "label": "fields_of_work",
@@ -238,6 +256,15 @@ def create_new_form_entrie(form_data: FormData):
                 "required": False,
                 "libras": form_data.values["libras"],
             },
+            {
+                "uid": "modality",
+                "label": "modality",
+                "kind": "text",
+                "placeholder": "",
+                "required": False,
+                "modality": form_data.values["modality"],
+            },
+            
             {
                 "uid": "extra_field_years_of_experience",
                 "label": "years_of_experience",
