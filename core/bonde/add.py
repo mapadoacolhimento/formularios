@@ -88,7 +88,7 @@ def create_new_form_entrie(form_data: FormData):
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "values": form_data.values["color"],
+                "value": form_data.values["color"],
             },
             {
                 "uid": "extra_field_gender",
@@ -96,7 +96,7 @@ def create_new_form_entrie(form_data: FormData):
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "gender": form_data.values["gender"],
+                "value": form_data.values["gender"],
             },
             {
                 "uid": "extra_field_birth_date",
@@ -104,7 +104,7 @@ def create_new_form_entrie(form_data: FormData):
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "birth_date": form_data.values["birth_date"],
+                "value": form_data.values["birth_date"],
             },
             {
                 "uid": "extra_field_libras",
@@ -112,7 +112,7 @@ def create_new_form_entrie(form_data: FormData):
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "libras": form_data.values["libras"],
+                "value": form_data.values["libras"],
             },
             {
                 "uid": "extra_field_years_of_experience",
@@ -120,33 +120,33 @@ def create_new_form_entrie(form_data: FormData):
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "years_of_experience": form_data.values["years_of_experience"],
+                "value": form_data.values["years_of_experience"],
             },
             
             {
-                "uid": "approach",
+                "uid": "extra_field_approach",
                 "label": "approach",
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "approach": form_data.values["approach"],
+                "value": form_data.values["approach"],
             },
             
             {
-                "uid": "modality",
+                "uid": "extra_field_modality",
                 "label": "modality",
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "modality": form_data.values["modality"],
+                "value": form_data.values["modality"],
             },
             {
-                "uid": "fields_of_work",
+                "uid": "extra_field_fields_of_work",
                 "label": "fields_of_work",
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "fields_of_work": form_data.values["fields_of_work"],
+                "value": form_data.values["fields_of_work"],
             },
             {
                 "uid": "extra_field_status",
@@ -154,7 +154,7 @@ def create_new_form_entrie(form_data: FormData):
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "status": form_data.values["status"],
+                "value": form_data.values["status"],
             },
         ]
     else:
@@ -230,7 +230,7 @@ def create_new_form_entrie(form_data: FormData):
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "values": form_data.values["color"],
+                "value": form_data.values["color"],
             },
             {
                 "uid": "extra_field_gender",
@@ -238,15 +238,15 @@ def create_new_form_entrie(form_data: FormData):
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "gender": form_data.values["gender"],
+                "value": form_data.values["gender"],
             },
             {
-                "uid": "extra_field_birth-date",
+                "uid": "extra_field_birth_date",
                 "label": "birth_date",
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "birth_date": form_data.values["birth_date"],
+                "value": form_data.values["birth_date"],
             },
             {
                 "uid": "extra_field_libras",
@@ -254,15 +254,15 @@ def create_new_form_entrie(form_data: FormData):
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "libras": form_data.values["libras"],
+                "value": form_data.values["libras"],
             },
             {
-                "uid": "modality",
+                "uid": "extra_field_modality",
                 "label": "modality",
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "modality": form_data.values["modality"],
+                "value": form_data.values["modality"],
             },
             
             {
@@ -271,15 +271,15 @@ def create_new_form_entrie(form_data: FormData):
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "years_of_experience": form_data.values["years_of_experience"],
+                "value": form_data.values["years_of_experience"],
             },
             {
-                "uid": "fields_of_work",
+                "uid": "extra_field_fields_of_work",
                 "label": "fields_of_work",
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "fields_of_work": form_data.values["fields_of_work"],
+                "value": form_data.values["fields_of_work"],
             },
             {
                 "uid": "extra_field_status",
@@ -287,7 +287,7 @@ def create_new_form_entrie(form_data: FormData):
                 "kind": "text",
                 "placeholder": "",
                 "required": False,
-                "status": form_data.values["status"],
+                "value": form_data.values["status"],
             },
         ]
 
