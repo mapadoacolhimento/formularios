@@ -50,6 +50,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "theme",
     "core",
+    "core.bonde",
+    "core.moodle"
+    
 ]
 
 MIDDLEWARE = [
@@ -99,8 +102,17 @@ WSGI_APPLICATION = "project.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DEFAULT_DB_SQLITE = BASE_DIR / "db.sqlite3"
+BONDE_DB_SQLITE = BASE_DIR / "bonde.sqlite3"
+DATABASES = {
+  "default": env.db_url("DATABASE_URL", f"sqlite:///{DEFAULT_DB_SQLITE}"),
+  "bonde":  env.db_url("BONDE_DATABASE_URL", f"sqlite:///{BONDE_DB_SQLITE}")          
+             
+             
+             }
 
-DATABASES = {"default": env.db_url("DATABASE_URL", f"sqlite:///{DEFAULT_DB_SQLITE}")}
+DATABASE_ROUTERS = [
+    "core.bonde.router.AuthRouter",
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -157,3 +169,7 @@ STATICFILES_FINDERS = (
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+MOODLE_API_URL = env("MOODLE_API_URL", default= "https://moodle.site.com")
+
+MOODLE_API_KEY = env("MOODLE_API_KEY", default="XXXXXXXXX")
